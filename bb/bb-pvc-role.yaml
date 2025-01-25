@@ -1,0 +1,25 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: bb-backend-role
+  namespace: bb
+rules:
+- apiGroups: [""]
+  resources:
+  - persistentvolumeclaims
+  - persistentvolumes
+  - pods
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - delete
+- apiGroups: [""]
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+

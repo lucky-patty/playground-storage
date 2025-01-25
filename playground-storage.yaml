@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: playground-storage
+spec:
+  capacity:
+    storage: 50Gi # Size of the shared storage
+  accessModes:
+  - ReadWriteMany # Allows multiple pods to read/write simultaneously
+  persistentVolumeReclaimPolicy: Retain # Retains the data even after PVC deletion
+  storageClassName: do-block-storage # Ensure this matches your StorageClass
+  csi:
+    driver: dobs.csi.digitalocean.com
+    volumeHandle: playground-storage # Unique ID for the volume
+    fsType: ext4
